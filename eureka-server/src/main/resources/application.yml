@@ -1,10 +1,19 @@
 spring:
+  security:
+    user:
+      name: user
+      password: 123456
   application:
     name: eureka-server
 server:
   port: 8761
 
 eureka:
+  server:
+    #是否开启自我保护，默认true.可以设成false来关闭
+    enable-self-preservation: true
+    #清理间隔(ms)，默认60s
+    eviction-interval-timer-in-ms: 2000
   instance:
     #注册实例名
     hostname: localhost
@@ -15,6 +24,31 @@ eureka:
     register-with-eureka: false
     #是否拉取其他服务
     fetch-registry: false
+
 #配置日志
 logging:
   config: classpath:logback.xml
+
+
+#为每个erurka的Server进行以下配置
+#spring:
+#  application:
+#    name: eureka-cluster #集群名字每个服务都同一
+#server:
+#  port: 1001 #每个eureka服务器端口
+#eureka:
+#  instance:
+#    hostname: erueka-1
+#  client:
+#    service-url:
+#      #填写所有其他erueka服务的url
+#      defaultZone: http://erueka-2:1002/eureka/,http://erueka-3:1003/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: shutdown #暴露我们的shutdown端点
+  endpoint:
+    shutdown:
+      enabled: true #再次确认暴露端点
