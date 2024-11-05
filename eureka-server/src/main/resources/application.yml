@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 8761
+
+eureka:
+  instance:
+    #注册实例名
+    hostname: localhost
+    #是否将自己的ip注册到eureka中，默认false
+    prefer-ip-address: true
+  client:
+    #是否注册到eureka中
+    register-with-eureka: false
+    #是否拉取其他服务
+    fetch-registry: false
+#配置日志
+logging:
+  config: classpath:logback.xml
