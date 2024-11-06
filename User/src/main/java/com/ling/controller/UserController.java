@@ -24,8 +24,8 @@ public class UserController {
         return "Get user information: "+port+" successfully!";
     }
 
-    @RequestMapping("/getUserInfo/{userId}")
-    public String getUser(@PathVariable String userId){
+    @RequestMapping("/getUserInfo")
+    public String getUser(String userId){
         return userService.getUserInfo(userId);
     }
 }

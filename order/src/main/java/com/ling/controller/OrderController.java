@@ -15,8 +15,8 @@ public class OrderController {
     //1.使用Eureka实现调用User的getUserInfo方法,默认获取userId然后下订单，实际肯定不这样
     @Autowired
     private OrderService orderService;
-    @RequestMapping("/addOrder/{userId}")
-    public String createOrder(@PathVariable String userId){
+    @RequestMapping("/addOrder")
+    public String createOrder(String userId){
 
         return orderService.createOrder(userId);
     }
