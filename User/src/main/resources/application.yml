@@ -1,6 +1,11 @@
 spring:
   application:
     name: User
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos服务器地址
+        service: User #服务名称
 server:
   port: 9001
 logging:

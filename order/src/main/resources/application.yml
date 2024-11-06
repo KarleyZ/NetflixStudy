@@ -1,12 +1,17 @@
 spring:
   application:
     name: Order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #nacos服务器地址
+        service: Order #服务名称
 server:
   port: 9002
 logging:
   config: classpath:logback.xml
 
-eureka:
-  client:
-  service-url:
-  defaultZone: http://localhost:8761/eureka
+#eureka:
+#  client:
+#  service-url:
+#  defaultZone: http://localhost:8761/eureka

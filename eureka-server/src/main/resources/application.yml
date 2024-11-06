@@ -9,21 +9,28 @@ server:
   port: 8761
 
 eureka:
-  server:
-    #是否开启自我保护，默认true.可以设成false来关闭
-    enable-self-preservation: true
-    #清理间隔(ms)，默认60s
-    eviction-interval-timer-in-ms: 2000
   instance:
+    #eureka服务端在接受到实例的最后一次发出的心跳后，需要等待的时间（秒），
+    #在这段时间内如果客户端没有发出新的心跳，服务器就会将实例从其注册表中删除。
+    #默认90s
+    lease-expiration-duration-in-seconds: 60
+    #eureka客户端需要多久给服务端发送心跳，默认30s
+    lease-renewal-interval-in-seconds: 20
     #注册实例名
     hostname: localhost
     #是否将自己的ip注册到eureka中，默认false
     prefer-ip-address: true
+
   client:
     #是否注册到eureka中
     register-with-eureka: false
     #是否拉取其他服务
     fetch-registry: false
+#  server:
+#    #是否开启自我保护，默认true.可以设成false来关闭
+#    enable-self-preservation: true
+#    #清理间隔(ms)，默认60s
+#    eviction-interval-timer-in-ms: 2000
 
 #配置日志
 logging:
